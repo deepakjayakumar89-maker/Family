@@ -4,7 +4,10 @@
 
    HOW TO ADD YOUR OWN PHOTOS (no other code changes needed):
    1) Drop your photos into the /images/gallery/ folder, named
-      photo25.jpg, photo26.jpg, photo27.jpg ... (sequential).
+      photo25.webp, photo26.webp, photo27.webp ... (sequential).
+      Gallery photos use the WebP format for faster loading — convert
+      your JPG/PNG photos to .webp before adding them (any free image
+      converter or "Export as WebP" in most photo editors works).
    2) Raise TOTAL_PHOTOS below to match how many files you have.
    3) That's it — "See More Memories" will reveal them automatically.
 
@@ -29,7 +32,7 @@
 
   const galleryImages = Array.from({ length: TOTAL_PHOTOS }, (_, i) => ({
     num: i + 1,
-    src: `images/gallery/photo${i + 1}.jpg`
+    src: `images/gallery/photo${i + 1}.webp`
   }));
 
   let renderedCount = 0;
