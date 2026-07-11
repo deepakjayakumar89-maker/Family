@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammini Vilasam &mdash; Our Family Storybook of Memories</title>
+<meta name="description" content="Ammini Vilasam is our family's storybook home &mdash; a warm gallery of memories, faces, and the tree that ties us all together.">
+<meta name="theme-color" content="#FFF3E9">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <span class="loader-emoji">🪔</span>
+    <p class="loader-text" data-i18n-html="brand">Ammini <span>Vilasam</span></p>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div>
+
+<!-- Ambient floating particles layer (decorative, aria-hidden) -->
+<div class="particle-field" id="particleField" aria-hidden="true"></div>
+
+<!-- Soft background music. Replace /audio/lullaby-theme.mp3 with your own track
+     (keep the same file name) to swap the music without touching any code. -->
+<audio id="bgMusic" loop preload="auto" aria-hidden="true">
+  <source src="audio/lullaby-theme.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Skip link for accessibility -->
+<a class="skip-link" href="#gallery" data-i18n="skip">Skip to memory gallery</a>
+
+<!-- Sticky Navigation -->
+<header>
+  <nav class="navbar" id="navbar" aria-label="Primary">
+    <a href="#home" class="nav-logo" data-i18n-html="brand">Ammini <span>Vilasam</span></a>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" data-i18n="nav.home">Home</a></li>
+        <li><a href="#featured" data-i18n="nav.family">Little Miracles</a></li>
+        <li><a href="#gallery" data-i18n="nav.memories">Memories</a></li>
+        <li><a href="#tree" data-i18n="nav.tree">Family Tree</a></li>
+        <li><a href="#footer" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language / ഭാഷ മാറ്റുക">
+          <span class="lang-option lang-en is-active" data-lang-label="en">EN</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-option lang-ml" data-lang-label="ml">മല</span>
+        </button>
+
+        <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false" aria-label="Play soft background music">
+          <span class="music-icon" aria-hidden="true">🎵</span>
+        </button>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-sky" aria-hidden="true">
+      <div class="cloud cloud-1">☁️</div>
+      <div class="cloud cloud-2">☁️</div>
+      <div class="cloud cloud-3">☁️</div>
+      <div class="butterfly bf-1">🦋</div>
+      <div class="butterfly bf-2">🦋</div>
+      <div class="flower fl-1">🌸</div>
+      <div class="flower fl-2">🌺</div>
+      <div class="flower fl-3">🌼</div>
+      <div class="star st-1">✨</div>
+      <div class="star st-2">⭐</div>
+      <div class="bubble bb-1"></div>
+      <div class="bubble bb-2"></div>
+      <div class="bubble bb-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-i18n="hero.eyebrow">Est. in the heart of our home</p>
+      <h1 class="hero-logo" data-i18n-html="brand">Ammini <span>Vilasam</span></h1>
+      <p class="hero-tagline" data-i18n="hero.tagline">Every smile tells a story, every picture keeps a memory alive.</p>
+      <a href="#featured" class="hero-cta">
+        <span data-i18n="hero.cta">Step Into Our Story</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v14m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C240,120 480,0 720,32 C960,64 1200,120 1440,64 L1440,120 L0,120 Z"></path></svg>
+    </div>
+  </section>
+
+  <!-- FEATURED FAMILY -->
+  <section class="featured" id="featured" aria-labelledby="featuredHeading">
+    <div class="section-intro">
+      <p class="section-eyebrow" data-i18n="featured.eyebrow">The Hearts of Our Home</p>
+      <h2 id="featuredHeading" data-i18n="featured.heading">Our Beloved Three</h2>
+      <p class="section-sub" data-i18n="featured.sub">The faces that made every ordinary day feel like a page from a storybook.</p>
+    </div>
+
+    <div class="featured-grid">
+      <article class="feature-card" style="--delay:0s">
+        <div class="feature-photo">
+          <img src="images/featured/kujammu.jpg" alt="Kujammu, our grandmother, smiling warmly" loading="lazy" width="700" height="850">
+          <span class="feature-badge">👵</span>
+        </div>
+        <h3 class="feature-name" data-i18n="featured.kujammu.name">Kujammu</h3>
+        <p class="feature-role" data-i18n="featured.kujammu.role">The heart that holds our stories</p>
+      </article>
+
+      <article class="feature-card feature-card--center" style="--delay:0.15s">
+        <div class="feature-photo">
+          <img src="images/featured/shankaran.jpg" alt="Shankaran, our grandfather, smiling warmly" loading="lazy" width="700" height="850">
+          <span class="feature-badge">👴</span>
+        </div>
+        <h3 class="feature-name" data-i18n="featured.shankaran.name">Shankaran</h3>
+        <p class="feature-role" data-i18n="featured.shankaran.role">The roots that hold us steady</p>
+      </article>
+
+      <article class="feature-card" style="--delay:0.3s">
+        <div class="feature-photo">
+          <img src="images/featured/paru.jpg" alt="Paru, our little one, smiling brightly" loading="lazy" width="700" height="850">
+          <span class="feature-badge">👧</span>
+        </div>
+        <h3 class="feature-name" data-i18n="featured.paru.name">Paru</h3>
+        <p class="feature-role" data-i18n="featured.paru.role">The laughter that fills every room</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="gallery" aria-labelledby="galleryHeading">
+    <div class="section-intro">
+      <p class="section-eyebrow" data-i18n="gallery.eyebrow">A Chapter for Every Moment</p>
+      <h2 id="galleryHeading" data-i18n="gallery.heading">Our Gallery of Memories</h2>
+      <p class="section-sub" data-i18n="gallery.sub">A gentle scroll through the days worth remembering.</p>
+    </div>
+
+    <div class="masonry" id="masonryGrid" role="list"></div>
+
+    <div class="see-more-wrap">
+      <button class="see-more-btn" id="seeMoreBtn" type="button">
+        <span data-i18n="gallery.seeMore">See More Memories</span>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4v14m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="see-more-note" id="seeMoreNote"></p>
+    </div>
+  </section>
+
+  <!-- FAMILY TREE -->
+  <section class="tree-section" id="tree" aria-labelledby="treeHeading">
+    <div class="section-intro">
+      <p class="section-eyebrow" data-i18n="tree.eyebrow">Where Our Story Began</p>
+      <h2 id="treeHeading" data-i18n="tree.heading">Our Family Tree</h2>
+      <p class="section-sub" data-i18n="tree.sub">Every branch a family, every leaf a name we love.</p>
+    </div>
+
+    <div class="tree-wrap">
+      <svg class="tree-lines" id="treeLines" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+        <!-- grandparents to trunk -->
+        <path class="vine" d="M500,110 L500,190" />
+        <!-- trunk split to two families -->
+        <path class="vine" d="M500,190 C500,230 260,220 260,270" />
+        <path class="vine" d="M500,190 C500,230 740,220 740,270" />
+        <!-- family A parents to children -->
+        <path class="vine" d="M260,340 L260,390" />
+        <path class="vine" d="M260,390 C260,420 160,420 160,450" />
+        <path class="vine" d="M260,390 C260,420 360,420 360,450" />
+        <!-- family B parent to child -->
+        <path class="vine" d="M740,340 L740,450" />
+      </svg>
+
+      <div class="tree-grid">
+        <!-- Grandparents row -->
+        <div class="tree-row tree-row--grandparents">
+          <div class="tree-node" data-node>
+            <div class="tree-photo"><img src="images/tree/grandfather.jpg" alt="Jayakumar, Grandfather" loading="lazy" width="400" height="480"></div>
+            <p class="tree-relation" data-i18n="tree.relation.grandfather">Grandfather</p>
+            <h3 class="tree-name" data-i18n="tree.name.grandfather">Jayakumar</h3>
+          </div>
+          <div class="tree-node" data-node>
+            <div class="tree-photo"><img src="images/tree/grandmother.jpg" alt="SreeDevi, Grandmother" loading="lazy" width="400" height="480"></div>
+            <p class="tree-relation" data-i18n="tree.relation.grandmother">Grandmother</p>
+            <h3 class="tree-name" data-i18n="tree.name.grandmother">SreeDevi</h3>
+          </div>
+        </div>
+
+        <!-- Two families row -->
+        <div class="tree-row tree-row--families">
+
+          <div class="tree-family">
+            <p class="tree-family-label" data-i18n="tree.familyA.label">Family of Shilpa Jayakumar</p>
+            <div class="tree-family-parents">
+              <div class="tree-node" data-node>
+                <div class="tree-photo"><img src="images/tree/father_a.jpg" alt="Gokul, Father" loading="lazy" width="400" height="480"></div>
+                <p class="tree-relation" data-i18n="tree.relation.father">Father</p>
+                <h3 class="tree-name" data-i18n="tree.name.fatherA">Gokul</h3>
+              </div>
+              <div class="tree-node" data-node>
+                <div class="tree-photo"><img src="images/tree/mother_a.jpg" alt="Shilpa, Mother" loading="lazy" width="400" height="480"></div>
+                <p class="tree-relation" data-i18n="tree.relation.mother">Mother</p>
+                <h3 class="tree-name" data-i18n="tree.name.motherA">Shilpa</h3>
+              </div>
+            </div>
+            <div class="tree-family-children">
+              <div class="tree-node tree-node--child" data-node>
+                <div class="tree-photo"><img src="images/tree/child_a1.jpg" alt="Jaahnavi, Daughter" loading="lazy" width="400" height="480"></div>
+                <p class="tree-relation" data-i18n="tree.relation.daughter">Daughter</p>
+                <h3 class="tree-name" data-i18n="tree.name.childA1">Jaahnavi</h3>
+              </div>
+              <div class="tree-node tree-node--child" data-node>
+                <div class="tree-photo"><img src="images/tree/child_a2.jpg" alt="Jagannatha, Son" loading="lazy" width="400" height="480"></div>
+                <p class="tree-relation" data-i18n="tree.relation.son">Son</p>
+                <h3 class="tree-name" data-i18n="tree.name.childA2">Jagannatha</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="tree-family">
+            <p class="tree-family-label" data-i18n="tree.familyB.label">Family of Deepak Jayakumar</p>
+            <div class="tree-family-parents">
+              <div class="tree-node" data-node>
+                <div class="tree-photo"><img src="images/tree/father_b.jpg" alt="Deepak, Father" loading="lazy" width="400" height="480"></div>
+                <p class="tree-relation" data-i18n="tree.relation.father">Father</p>
+                <h3 class="tree-name" data-i18n="tree.name.fatherB">Deepak</h3>
+              </div>
+              <div class="tree-node" data-node>
+                <div class="tree-photo"><img src="images/tree/mother_b.jpg" alt="Gayathri, Mother" loading="lazy" width="400" height="480"></div>
+                <p class="tree-relation" data-i18n="tree.relation.mother">Mother</p>
+                <h3 class="tree-name" data-i18n="tree.name.motherB">Gayathri</h3>
+              </div>
+            </div>
+            <div class="tree-family-children">
+              <div class="tree-node tree-node--child" data-node>
+                <div class="tree-photo"><img src="images/tree/child_b1.jpg" alt="Vamika, Daughter" loading="lazy" width="400" height="480"></div>
+                <p class="tree-relation" data-i18n="tree.relation.daughter">Daughter</p>
+                <h3 class="tree-name" data-i18n="tree.name.childB1">Vamika</h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-content">
+    <p class="footer-logo" data-i18n-html="brand">Ammini <span>Vilasam</span></p>
+    <p class="footer-tagline" data-i18n="footer.tagline">A little house built from a lifetime of memories.</p>
+    <p class="footer-note" data-i18n="footer.note">Made with 🤎 for our family, today and for every family yet to come.</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close photo viewer">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo">&#10094;</button>
+  <!-- prev/next/close labels update via JS on language toggle for a11y -->
+  <div class="lightbox-stage">
+    <img src="" alt="" id="lightboxImg" class="lightbox-img">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">&#10095;</button>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" hidden>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 19V5m0 0l-6 6m6-6l6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
