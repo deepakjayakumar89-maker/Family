@@ -175,11 +175,26 @@
 
   /* ---------------------------------------------------------
      1. LOADER
+     Hides on DOMContentLoaded (HTML/CSS ready) rather than the
+     full window "load" event, so a slow-loading background music
+     file, web font, or flaky mobile connection can never leave
+     this stuck on screen. A hard safety-net timeout guarantees it
+     always disappears no matter what.
      --------------------------------------------------------- */
   const loader = document.getElementById("loader");
-  window.addEventListener("load", () => {
-    setTimeout(() => loader.classList.add("is-hidden"), 500);
-  });
+  let loaderHidden = false;
+  function hideLoader() {
+    if (loaderHidden) return;
+    loaderHidden = true;
+    loader.classList.add("is-hidden");
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => setTimeout(hideLoader, 400));
+  } else {
+    setTimeout(hideLoader, 200);
+  }
+  // Absolute safety net: never let the loader stay up more than 3s.
+  setTimeout(hideLoader, 3000);
 
   /* ---------------------------------------------------------
      2. AMBIENT PARTICLES (hearts, sparkles, petals, fireflies)
@@ -328,9 +343,11 @@
       .catch(() => {});
   }
 
-  window.addEventListener("load", () => {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => setTimeout(tryAutoplay, 900));
+  } else {
     setTimeout(tryAutoplay, 900);
-  });
+  }
 
   ["click", "touchstart", "keydown"].forEach((evt) => {
     document.addEventListener(evt, tryResumeOnFirstGesture, { once: true, passive: true });

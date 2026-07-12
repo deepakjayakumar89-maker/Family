@@ -9,7 +9,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- Loaded as non-blocking: on a slow or blocked connection this must never
+     hold up script.js execution (which is what hides the page loader). -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -29,7 +32,7 @@
 
 <!-- Soft background music. Replace /audio/lullaby-theme.mp3 with your own track
      (keep the same file name) to swap the music without touching any code. -->
-<audio id="bgMusic" loop preload="auto" aria-hidden="true">
+<audio id="bgMusic" loop preload="none" aria-hidden="true">
   <source src="audio/lullaby-theme.mp3" type="audio/mpeg">
 </audio>
 
