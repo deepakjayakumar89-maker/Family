@@ -110,6 +110,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; color: var(--in
 @keyframes swing { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
 .loader-text {
   font-family: var(--font-display);
+  font-weight: 600;
   font-size: 1.4rem;
   margin-top: 12px;
   color: var(--ink);

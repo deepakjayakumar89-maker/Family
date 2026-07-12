@@ -189,19 +189,25 @@
     loader.classList.add("is-hidden");
   }
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => setTimeout(hideLoader, 400));
+    document.addEventListener("DOMContentLoaded", () => setTimeout(hideLoader, 120));
   } else {
-    setTimeout(hideLoader, 200);
+    setTimeout(hideLoader, 30);
   }
-  // Absolute safety net: never let the loader stay up more than 3s.
-  setTimeout(hideLoader, 3000);
+  // Absolute safety net: never let the loader stay up more than 1.5s.
+  setTimeout(hideLoader, 1500);
 
   /* ---------------------------------------------------------
      2. AMBIENT PARTICLES (hearts, sparkles, petals, fireflies)
+     Purely decorative — deferred off the critical rendering path
+     (via requestIdleCallback) and scaled down on small / low-power
+     screens so it never competes with real content for the main
+     thread on mobile.
      --------------------------------------------------------- */
   const particleField = document.getElementById("particleField");
   const PARTICLE_GLYPHS = ["\uD83D\uDC97", "\u2728", "\uD83C\uDF38", "\uD83C\uDF6E", "\uD83C\uDF1F"];
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isSmallScreen = window.matchMedia("(max-width: 640px)").matches;
+  const isLowPowerDevice = isSmallScreen || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
 
   function spawnParticle() {
     if (prefersReducedMotion) return;
@@ -230,12 +236,18 @@
     window.setTimeout(() => el.remove(), 20000);
   }
 
-  if (!prefersReducedMotion) {
-    for (let i = 0; i < 14; i++) {
+  function startParticles() {
+    if (prefersReducedMotion) return;
+    const initialCount = isLowPowerDevice ? 6 : 14;
+    const interval = isLowPowerDevice ? 2600 : 1400;
+    for (let i = 0; i < initialCount; i++) {
       window.setTimeout(spawnParticle, i * 400);
     }
-    window.setInterval(spawnParticle, 1400);
+    window.setInterval(spawnParticle, interval);
   }
+
+  const scheduleIdle = window.requestIdleCallback || ((cb) => window.setTimeout(cb, 300));
+  scheduleIdle(startParticles);
 
   /* ---------------------------------------------------------
      3. NAVBAR — scroll shadow + mobile toggle

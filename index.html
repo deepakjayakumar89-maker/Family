@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Loaded as non-blocking: on a slow or blocked connection this must never
      hold up script.js execution (which is what hides the page loader). -->
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -26,6 +26,23 @@
     <div class="loader-bar"><span></span></div>
   </div>
 </div>
+<script>
+  /* Inline, zero-dependency safety net: guarantees the loading screen
+     can never get stuck, even if script.js, fonts, images, or audio
+     are slow, blocked, or fail entirely on a poor mobile connection.
+     This has no external dependencies of its own, so nothing can
+     delay it from running. */
+  (function () {
+    function hide() {
+      var el = document.getElementById("loader");
+      if (el) el.classList.add("is-hidden");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(hide, 100);
+    });
+    setTimeout(hide, 2500);
+  })();
+</script>
 
 <!-- Ambient floating particles layer (decorative, aria-hidden) -->
 <div class="particle-field" id="particleField" aria-hidden="true"></div>
@@ -117,7 +134,7 @@
     <div class="featured-grid">
       <article class="feature-card" style="--delay:0s">
         <div class="feature-photo">
-          <img src="images/featured/kujammu.jpg" alt="Kujammu, our grandmother, smiling warmly" loading="lazy" width="700" height="850">
+          <img src="images/featured/kujammu.jpg" alt="Kujammu, our grandmother, smiling warmly" loading="lazy" decoding="async" width="700" height="850">
           <span class="feature-badge">👵</span>
         </div>
         <h3 class="feature-name" data-i18n="featured.kujammu.name">Kujammu</h3>
@@ -126,7 +143,7 @@
 
       <article class="feature-card feature-card--center" style="--delay:0.15s">
         <div class="feature-photo">
-          <img src="images/featured/shankaran.jpg" alt="Shankaran, our grandfather, smiling warmly" loading="lazy" width="700" height="850">
+          <img src="images/featured/shankaran.jpg" alt="Shankaran, our grandfather, smiling warmly" loading="lazy" decoding="async" width="700" height="850">
           <span class="feature-badge">👴</span>
         </div>
         <h3 class="feature-name" data-i18n="featured.shankaran.name">Shankaran</h3>
@@ -135,7 +152,7 @@
 
       <article class="feature-card" style="--delay:0.3s">
         <div class="feature-photo">
-          <img src="images/featured/paru.jpg" alt="Paru, our little one, smiling brightly" loading="lazy" width="700" height="850">
+          <img src="images/featured/paru.jpg" alt="Paru, our little one, smiling brightly" loading="lazy" decoding="async" width="700" height="850">
           <span class="feature-badge">👧</span>
         </div>
         <h3 class="feature-name" data-i18n="featured.paru.name">Paru</h3>
@@ -190,12 +207,12 @@
         <!-- Grandparents row -->
         <div class="tree-row tree-row--grandparents">
           <div class="tree-node" data-node>
-            <div class="tree-photo"><img src="images/tree/grandfather.jpg" alt="Jayakumar, Grandfather" loading="lazy" width="400" height="480"></div>
+            <div class="tree-photo"><img src="images/tree/grandfather.jpg" alt="Jayakumar, Grandfather" loading="lazy" decoding="async" width="400" height="480"></div>
             <p class="tree-relation" data-i18n="tree.relation.grandfather">Grandfather</p>
             <h3 class="tree-name" data-i18n="tree.name.grandfather">Jayakumar</h3>
           </div>
           <div class="tree-node" data-node>
-            <div class="tree-photo"><img src="images/tree/grandmother.jpg" alt="SreeDevi, Grandmother" loading="lazy" width="400" height="480"></div>
+            <div class="tree-photo"><img src="images/tree/grandmother.jpg" alt="SreeDevi, Grandmother" loading="lazy" decoding="async" width="400" height="480"></div>
             <p class="tree-relation" data-i18n="tree.relation.grandmother">Grandmother</p>
             <h3 class="tree-name" data-i18n="tree.name.grandmother">SreeDevi</h3>
           </div>
@@ -208,24 +225,24 @@
             <p class="tree-family-label" data-i18n="tree.familyA.label">Family of Shilpa Jayakumar</p>
             <div class="tree-family-parents">
               <div class="tree-node" data-node>
-                <div class="tree-photo"><img src="images/tree/father_a.jpg" alt="Gokul, Father" loading="lazy" width="400" height="480"></div>
+                <div class="tree-photo"><img src="images/tree/father_a.jpg" alt="Gokul, Father" loading="lazy" decoding="async" width="400" height="480"></div>
                 <p class="tree-relation" data-i18n="tree.relation.father">Father</p>
                 <h3 class="tree-name" data-i18n="tree.name.fatherA">Gokul</h3>
               </div>
               <div class="tree-node" data-node>
-                <div class="tree-photo"><img src="images/tree/mother_a.jpg" alt="Shilpa, Mother" loading="lazy" width="400" height="480"></div>
+                <div class="tree-photo"><img src="images/tree/mother_a.jpg" alt="Shilpa, Mother" loading="lazy" decoding="async" width="400" height="480"></div>
                 <p class="tree-relation" data-i18n="tree.relation.mother">Mother</p>
                 <h3 class="tree-name" data-i18n="tree.name.motherA">Shilpa</h3>
               </div>
             </div>
             <div class="tree-family-children">
               <div class="tree-node tree-node--child" data-node>
-                <div class="tree-photo"><img src="images/tree/child_a1.jpg" alt="Jaahnavi, Daughter" loading="lazy" width="400" height="480"></div>
+                <div class="tree-photo"><img src="images/tree/child_a1.jpg" alt="Jaahnavi, Daughter" loading="lazy" decoding="async" width="400" height="480"></div>
                 <p class="tree-relation" data-i18n="tree.relation.daughter">Daughter</p>
                 <h3 class="tree-name" data-i18n="tree.name.childA1">Jaahnavi</h3>
               </div>
               <div class="tree-node tree-node--child" data-node>
-                <div class="tree-photo"><img src="images/tree/child_a2.jpg" alt="Jagannatha, Son" loading="lazy" width="400" height="480"></div>
+                <div class="tree-photo"><img src="images/tree/child_a2.jpg" alt="Jagannatha, Son" loading="lazy" decoding="async" width="400" height="480"></div>
                 <p class="tree-relation" data-i18n="tree.relation.son">Son</p>
                 <h3 class="tree-name" data-i18n="tree.name.childA2">Jagannatha</h3>
               </div>
@@ -236,19 +253,19 @@
             <p class="tree-family-label" data-i18n="tree.familyB.label">Family of Deepak Jayakumar</p>
             <div class="tree-family-parents">
               <div class="tree-node" data-node>
-                <div class="tree-photo"><img src="images/tree/father_b.jpg" alt="Deepak, Father" loading="lazy" width="400" height="480"></div>
+                <div class="tree-photo"><img src="images/tree/father_b.jpg" alt="Deepak, Father" loading="lazy" decoding="async" width="400" height="480"></div>
                 <p class="tree-relation" data-i18n="tree.relation.father">Father</p>
                 <h3 class="tree-name" data-i18n="tree.name.fatherB">Deepak</h3>
               </div>
               <div class="tree-node" data-node>
-                <div class="tree-photo"><img src="images/tree/mother_b.jpg" alt="Gayathri, Mother" loading="lazy" width="400" height="480"></div>
+                <div class="tree-photo"><img src="images/tree/mother_b.jpg" alt="Gayathri, Mother" loading="lazy" decoding="async" width="400" height="480"></div>
                 <p class="tree-relation" data-i18n="tree.relation.mother">Mother</p>
                 <h3 class="tree-name" data-i18n="tree.name.motherB">Gayathri</h3>
               </div>
             </div>
             <div class="tree-family-children">
               <div class="tree-node tree-node--child" data-node>
-                <div class="tree-photo"><img src="images/tree/child_b1.jpg" alt="Vamika, Daughter" loading="lazy" width="400" height="480"></div>
+                <div class="tree-photo"><img src="images/tree/child_b1.jpg" alt="Vamika, Daughter" loading="lazy" decoding="async" width="400" height="480"></div>
                 <p class="tree-relation" data-i18n="tree.relation.daughter">Daughter</p>
                 <h3 class="tree-name" data-i18n="tree.name.childB1">Vamika</h3>
               </div>
