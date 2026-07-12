@@ -24,6 +24,7 @@
     <span class="loader-emoji">🪔</span>
     <p class="loader-text" data-i18n-html="brand">Ammini <span>Vilasam</span></p>
     <div class="loader-bar"><span></span></div>
+    <button class="loader-skip" id="loaderSkip" type="button">Tap to continue →</button>
   </div>
 </div>
 <script>
@@ -41,6 +42,20 @@
       setTimeout(hide, 100);
     });
     setTimeout(hide, 2500);
+
+    // Ultimate manual escape hatch: if the loader is somehow still
+    // visible after 1.8s, reveal a "tap to continue" button. Tapping
+    // anywhere on the loader also dismisses it.
+    setTimeout(function () {
+      var el = document.getElementById("loader");
+      if (el && !el.classList.contains("is-hidden")) {
+        el.classList.add("show-skip");
+      }
+    }, 1800);
+    document.addEventListener("DOMContentLoaded", function () {
+      var el = document.getElementById("loader");
+      if (el) el.addEventListener("click", hide);
+    });
   })();
 </script>
 

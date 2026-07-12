@@ -239,11 +239,15 @@
   function startParticles() {
     if (prefersReducedMotion) return;
     const initialCount = isLowPowerDevice ? 6 : 14;
-    const interval = isLowPowerDevice ? 2600 : 1400;
     for (let i = 0; i < initialCount; i++) {
       window.setTimeout(spawnParticle, i * 400);
     }
-    window.setInterval(spawnParticle, interval);
+    // On low-power / mobile devices we only spawn the small initial
+    // batch and stop — no continuous interval — to keep the main
+    // thread completely free for real content and interactions.
+    if (!isLowPowerDevice) {
+      window.setInterval(spawnParticle, 1400);
+    }
   }
 
   const scheduleIdle = window.requestIdleCallback || ((cb) => window.setTimeout(cb, 300));
